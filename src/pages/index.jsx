@@ -5,34 +5,42 @@ import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
 
 const endpoints = {
-	lastPosition: "getLastPosition/211281610",
-	lastPositionFrom: "getLastPositionFromVF/211281610",
+	lastPositionSeaWatch3: "getLastPosition/211281610",
+	lastPositionSeaWatch4: "getLastPosition/211300760",
 };
 
 const Page = () => {
 	const [url, setUrl] = useState(endpoints.lastPosition);
 	const { data, loading, error } = useGet(`/api/ais?q=${url}`);
+	console.log(data);
 
 	return (
 		<Layout>
 			<Head>
-				<title key="title">My Project</title>
-				<meta key="description" name="description" content="This is my project" />
+				<title key="title">Sea-Watch</title>
+				<meta
+					key="description"
+					name="description"
+					content="
+
+Status Overview Of The Ships "
+				/>
 			</Head>
-			<h1>Home</h1>
+			<h1>Missions</h1>
+
 			<Button
 				onClick={() => {
-					setUrl(endpoints.lastPositionFrom);
+					setUrl(endpoints.lastPositionSeaWatch3);
 				}}
 			>
-				Last Position
+				Sea-Watch 3
 			</Button>
 			<Button
 				onClick={() => {
-					setUrl(endpoints.lastPosition);
+					setUrl(endpoints.lastPositionSeaWatch4);
 				}}
 			>
-				Beispiel2
+				Sea-Watch 4
 			</Button>
 			{loading && <div>Loading...</div>}
 			{error && <div>{error.message}</div>}
