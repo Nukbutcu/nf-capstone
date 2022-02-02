@@ -1,11 +1,16 @@
 import Head from "next/head";
-import React from "react";
-import Button from "../atoms/button";
+import React, { useState } from "react";
 import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
 
+const endpoints = {
+	lastPosition: "getLastPosition/211281610",
+	lastPositionFrom: "getLastPositionFromVF/211281610",
+};
+
 const Page = () => {
-	const { data, loading, error } = useGet("/api/hello");
+	const [url, setUrl] = useState(endpoints.lastPosition);
+	const { data, loading, error } = useGet(`/api/ais?q=${url}`);
 
 	return (
 		<Layout>
@@ -13,7 +18,8 @@ const Page = () => {
 				<title key="title">My Project</title>
 				<meta key="description" name="description" content="This is my project" />
 			</Head>
-			<h1>Home</h1>
+			<h1>Missions</h1>
+
 			{loading && <div>Loading...</div>}
 			{error && <div>{error.message}</div>}
 			{data && (
@@ -21,7 +27,6 @@ const Page = () => {
 					<code>{JSON.stringify(data, null, 4)}</code>
 				</pre>
 			)}
-			<Button>Click me</Button>
 		</Layout>
 	);
 };
