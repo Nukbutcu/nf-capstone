@@ -1,4 +1,16 @@
-# Next App
+# nf-capstone
+
+Status Overview Of The Ships
+
+
+
+![Mockup](../docs/Mockup.png)
+
+
+
+
+
+## Next App
 
 This is a template for a Next.js app.
 
