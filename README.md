@@ -4,7 +4,8 @@ Status Overview Of The Ships
 
 
 
-![Mockup](../docs/Mockup.png)
+![Mockup](../main/docs/Mockup.png)
+
 
 
 
