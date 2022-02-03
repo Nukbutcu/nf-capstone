@@ -12,22 +12,16 @@ const endpoints = {
 const Page = () => {
 	const [url, setUrl] = useState(endpoints.lastPosition);
 	const { data, loading, error } = useGet(`/api/ais?q=${url}`);
+
 	console.log(data);
 
 	return (
 		<Layout>
 			<Head>
 				<title key="title">Sea-Watch</title>
-				<meta
-					key="description"
-					name="description"
-					content="
-
-Status Overview Of The Ships "
-				/>
+				<meta key="description" name="description" content="Status Overview Of The Ships" />
 			</Head>
 			<h1>Missions</h1>
-
 			<Button
 				onClick={() => {
 					setUrl(endpoints.lastPositionSeaWatch3);
@@ -46,9 +40,10 @@ Status Overview Of The Ships "
 			{error && <div>{error.message}</div>}
 			{data && (
 				<pre>
-					<code>{JSON.stringify(data, null, 4)}</code>
+					<code>{JSON.stringify(data, null, 2)}</code>
 				</pre>
 			)}
+			)
 		</Layout>
 	);
 };
