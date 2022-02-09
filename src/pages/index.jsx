@@ -1,49 +1,32 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import Button from "../atoms/button";
-import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
-
-const endpoints = {
-	lastPositionSeaWatch3: "getLastPosition/211281610",
-	lastPositionSeaWatch4: "getLastPosition/211300760",
-};
+import JsonData from "../../mmsi.json";
+import Link from "next/link";
 
 const Page = () => {
-	const [url, setUrl] = useState(endpoints.lastPosition);
-	const { data, loading, error } = useGet(`/api/ais?q=${url}`);
-
-	console.log(data);
+	const [jsonData, setjsonData] = useState(JsonData.Ships);
 
 	return (
 		<Layout>
 			<Head>
-				<title key="title">Sea-Watch</title>
+				<title key="title">Missions</title>
 				<meta key="description" name="description" content="Status Overview Of The Ships" />
 			</Head>
+
 			<h1>Missions</h1>
-			<Button
-				onClick={() => {
-					setUrl(endpoints.lastPositionSeaWatch3);
-				}}
-			>
-				Sea-Watch 3
-			</Button>
-			<Button
-				onClick={() => {
-					setUrl(endpoints.lastPositionSeaWatch4);
-				}}
-			>
-				Sea-Watch 4
-			</Button>
-			{loading && <div>Loading...</div>}
-			{error && <div>{error.message}</div>}
-			{data && (
-				<pre>
-					<code>{JSON.stringify(data, null, 2)}</code>
-				</pre>
-			)}
-			)
+			{jsonData.map((item, index) => (
+				<Link
+					href={{
+						pathname: "/about/[mmsi]",
+						query: { mmsi: item.MSNI, name: item.Name },
+					}}
+					key={index}
+				>
+					<Button key={index}>{item.Name}</Button>
+				</Link>
+			))}
 		</Layout>
 	);
 };
