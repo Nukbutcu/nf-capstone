@@ -6,8 +6,9 @@ import JsonData from "../../mmsi.json";
 import Link from "next/link";
 
 const Page = () => {
+	/* eslint-disable no-unused-vars */
 	const [jsonData, setjsonData] = useState(JsonData.Ships);
-
+	/* eslint-enable no-unused-vars */
 	return (
 		<Layout>
 			<Head>
@@ -16,13 +17,15 @@ const Page = () => {
 			</Head>
 
 			<h1>Missions</h1>
+
 			{jsonData.map((item, index) => (
 				<Link
+					key={index}
 					href={{
 						pathname: "/about/[mmsi]",
 						query: { mmsi: item.MSNI, name: item.Name },
 					}}
-					key={index}
+					passHref
 				>
 					<Button key={index}>{item.Name}</Button>
 				</Link>
