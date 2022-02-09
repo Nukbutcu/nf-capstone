@@ -20,10 +20,12 @@ const Description = () => {
 		const extractedData = data.data;
 		setData(extractedData);
 		if (extractedData) {
-			var dateObj = new Date(extractedData.unixtime).toLocaleDateString("en-US");
-			var dateObj =
-				dateObj + " " + new Date(extractedData.unixtime).toLocaleTimeString("en-US");
-			setunixTime(dateObj);
+			const unixTimestamp = data.data.unixtime;
+			const millisecons = unixTimestamp * 1000;
+			const dateObj = new Date(millisecons);
+			const humanDateformat = dateObj.toLocaleString();
+
+			setunixTime(humanDateformat);
 		}
 	}, []);
 
