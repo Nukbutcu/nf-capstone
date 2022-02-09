@@ -20,13 +20,20 @@
     "eslint-plugin-react-hooks",
     "eslint-plugin-jest"
   ],
+
   "rules": {
     "react/prop-types": 0,
-    "react/jsx-tag-spacing": [0, {
-      "closingSlash": "never",
-      "beforeSelfClosing": "always",
-      "afterOpening": "never",
-      "beforeClosing": "allow"
-    }]
+    "react/no-array-index-key": "off", 
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-sort-props": "off",
+    "react/jsx-tag-spacing": [
+      0,
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "allow"
+      }
+    ]
   }
 }
