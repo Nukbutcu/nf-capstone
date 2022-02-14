@@ -7,7 +7,7 @@ const Header = () => {
 		<header>
 			<nav data-test-id="navigation">
 				<Link href="/">
-					<FormatListBulletedIcon></FormatListBulletedIcon>
+					<FormatListBulletedIcon />
 				</Link>
 			</nav>
 		</header>
