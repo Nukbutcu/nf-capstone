@@ -1,9 +1,11 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import Button from "../atoms/button";
 import Layout from "../organisms/layout";
 import JsonData from "../../mmsi.json";
 import Link from "next/link";
+import { Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 
 const Page = () => {
 	/* eslint-disable no-unused-vars */
@@ -16,7 +18,9 @@ const Page = () => {
 				<meta key="description" name="description" content="Status Overview Of The Ships" />
 			</Head>
 
-			<h1>Missions</h1>
+			<Typography variant="h2" component="h1">
+				Missions
+			</Typography>
 
 			{jsonData.map((item, index) => (
 				<Link
@@ -27,7 +31,10 @@ const Page = () => {
 					}}
 					passHref
 				>
-					<Button key={index}>{item.Name}</Button>
+					<Button key={index}>
+						<LocationSearchingIcon />
+						{item.Name}
+					</Button>
 				</Link>
 			))}
 		</Layout>

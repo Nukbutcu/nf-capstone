@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import Layout from "../../organisms/layout";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Button from "../../atoms/button";
 import axios from "axios";
+import Card from "@material-ui/core/Card";
+import { CardContent } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 
 const Description = () => {
 	const router = useRouter();
@@ -12,6 +16,10 @@ const Description = () => {
 	const { name } = router.query;
 	const [data, setData] = useState();
 	const [unixTime, setunixTime] = useState();
+
+	const reload = () => {
+		router.reload();
+	};
 
 	useEffect(async () => {
 		const { data } = await axios.get(
@@ -35,13 +43,24 @@ const Description = () => {
 				<title key="title">{name} || description</title>
 				<meta key="description" name="description" content="" />
 			</Head>
-			<h1>{name}</h1>
-			<p>Latitude : {data && data.latitude}</p>
-			<p>Longitude : {data && data.longitude}</p>
-			<p>Speed : {data && data.speed}</p>
-			<p>TimeStamp: {data && data.timestamp}</p>
-			<p>UnixTime: {data && unixTime}</p>
-			<Button>Update</Button>
+			<Typography variant="h2" component="h1">
+				<LocationSearchingIcon />
+				{name}
+			</Typography>
+			<Card>
+				<CardContent>
+					<Typography paragraph>
+						<ul>
+							<li>Latitude : {data && data.latitude}</li>
+							<li>Longitude : {data && data.longitude}</li>
+							<li>Speed : {data && data.speed}</li>
+							<li>TimeStamp: {data && data.timestamp}</li>
+							<li>UnixTime: {data && unixTime}</li>
+						</ul>
+						<Button onClick={reload}>Refresh</Button>
+					</Typography>
+				</CardContent>
+			</Card>
 		</Layout>
 	);
 };
