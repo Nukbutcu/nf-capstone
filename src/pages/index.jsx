@@ -32,7 +32,7 @@ const Page = () => {
 					passHref
 				>
 					<Button key={index}>
-						<LocationSearchingIcon></LocationSearchingIcon>
+						<LocationSearchingIcon />
 						{item.Name}
 					</Button>
 				</Link>

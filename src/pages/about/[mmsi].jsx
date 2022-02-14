@@ -44,7 +44,7 @@ const Description = () => {
 				<meta key="description" name="description" content="" />
 			</Head>
 			<Typography variant="h2" component="h1">
-				<LocationSearchingIcon></LocationSearchingIcon>
+				<LocationSearchingIcon />
 				{name}
 			</Typography>
 			<Card>
