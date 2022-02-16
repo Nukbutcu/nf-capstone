@@ -1,18 +1,18 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../../organisms/layout";
 import { useRouter } from "next/router";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+// import CardContent from "@mui/material/CardContent";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import useGet from "../../ions/hooks/fetch/get";
-import { ListItemText } from "@mui/material";
+// import { ListItemText } from "@mui/material";
 
 const Description = () => {
-	const { reload, query } = useRouter();
+	const { query } = useRouter();
 	const { mmsi } = query;
 	const { name } = query;
 	const { data: ship } = useGet(`/ships/${mmsi}.json`);

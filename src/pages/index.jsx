@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../organisms/layout";
 import Link from "next/link";
 import Button from "@mui/material/Button";
@@ -33,12 +33,12 @@ const Page = () => {
 				Missions
 			</Typography>
 
-			{ships.map((item, index) => (
+			{ships.map(item => (
 				<div key={item.mmsi}>
 					<Typography variant="h3" component="h2">
 						{item.name}
 					</Typography>
-					<Link href={`/about/${item.mmsi}`}>
+					<Link href={`/about/${item.mmsi}`} passHref>
 						<Button>
 							<LocationSearchingIcon /> Info
 						</Button>
