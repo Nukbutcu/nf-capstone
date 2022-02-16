@@ -1,0 +1,20 @@
+{
+  "mmsi": "211281610",
+  "name": "Sea-Watch 3",
+  "missions": [
+    {
+      "id": "1",
+      "start": "05.03.2022",
+      "end": "14.03.2022",
+      "mission": "patrol in front of lybian coast",
+      "nextDestination": "Port of sicily"
+    },
+    {
+      "id": "2",
+      "start": "16.03.2022",
+      "end": "18.03.2022",
+      "mission": "patrol in front of morocco coast",
+      "nextDestination": "Port of sicily"
+    }
+  ]
+}

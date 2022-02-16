@@ -1,15 +1,26 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import Layout from "../organisms/layout";
-import JsonData from "../../mmsi.json";
 import Link from "next/link";
-import { Button } from "@material-ui/core";
-import { Typography } from "@material-ui/core";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
+import useGet from "../ions/hooks/fetch/get";
 
 const Page = () => {
 	/* eslint-disable no-unused-vars */
-	const [jsonData, setjsonData] = useState(JsonData.Ships);
+	const { data } = useGet("/mmsi.json");
+	console.log(data);
+	const ships = [
+		{
+			mmsi: "211281610",
+			name: "Sea-Watch 3",
+		},
+		{
+			mmsi: "211300760",
+			name: "Sea-Watch 4",
+		},
+	];
 	/* eslint-enable no-unused-vars */
 	return (
 		<Layout>
@@ -22,20 +33,17 @@ const Page = () => {
 				Missions
 			</Typography>
 
-			{jsonData.map((item, index) => (
-				<Link
-					key={index}
-					href={{
-						pathname: "/about/[mmsi]",
-						query: { mmsi: item.MSNI, name: item.Name },
-					}}
-					passHref
-				>
-					<Button key={index}>
-						<LocationSearchingIcon />
-						{item.Name}
-					</Button>
-				</Link>
+			{ships.map((item, index) => (
+				<div key={item.mmsi}>
+					<Typography variant="h3" component="h2">
+						{item.name}
+					</Typography>
+					<Link href={`/about/${item.mmsi}`}>
+						<Button>
+							<LocationSearchingIcon /> Info
+						</Button>
+					</Link>
+				</div>
 			))}
 		</Layout>
 	);
