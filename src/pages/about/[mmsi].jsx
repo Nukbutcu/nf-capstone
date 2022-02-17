@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 const Description = () => {
 	const { reload, query } = useRouter();
@@ -17,6 +18,8 @@ const Description = () => {
 	const { name } = query;
 	const [data, setData] = useState();
 	const [unixTime, setunixTime] = useState();
+
+	const NoSsrMap = dynamic(() => import("../../atoms/map/index"), { ssr: false });
 
 	useEffect(async () => {
 		const { data } = await axios.get(`http://localhost:5000/getLastPosition/${mmsi}`);
@@ -33,6 +36,14 @@ const Description = () => {
 		}
 	}, []);
 
+	const MyMap = () => {
+		return (
+			<div>
+				<NoSsrMap />
+			</div>
+		);
+	};
+
 	return (
 		<Layout>
 			<Head>
@@ -41,7 +52,7 @@ const Description = () => {
 			</Head>
 			<Typography variant="h2" component="h1">
 				<LocationSearchingIcon />
-				{name} 
+				{name}
 			</Typography>
 			<Card>
 				<CardContent>
@@ -50,7 +61,7 @@ const Description = () => {
 						<li>Longitude : {data && data.longitude}</li>
 						<li>Speed : {data && data.speed}</li>
 						<li>TimeStamp: {data && data.timestamp}</li>
-						<li>UnixTime: {data && unixTime}</li>
+						<li>Status from: {data && unixTime}</li>
 					</ul>
 					<Button
 						onClick={() => {
@@ -61,6 +72,7 @@ const Description = () => {
 					</Button>
 					<Link href={`/missions/${mmsi}`}>Show Missions</Link>
 				</CardContent>
+				<MyMap />
 			</Card>
 		</Layout>
 	);
