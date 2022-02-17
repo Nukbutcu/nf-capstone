@@ -8,7 +8,9 @@ import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import useGet from "../ions/hooks/fetch/get";
 
 const Page = () => {
+	/* eslint-disable no-unused-vars */
 	const { data } = useGet("/mmsi.json");
+	/* eslint-enable no-unused-vars */
 	const ships = [
 		{
 			mmsi: "211281610",
