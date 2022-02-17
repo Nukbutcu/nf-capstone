@@ -14,7 +14,7 @@ const Map = () => {
 			zoomControl
 			center={{ lat: 39.86099, lng: -0.06917167 }}
 			zoom={[13]}
-			scrollWheelZoom={false}
+			scrollWheelZoom={true}
 		>
 			<TileLayer
 				url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicGF1bHBhdWwxMjM0NSIsImEiOiJja3poMDE0aDMzOGgwMnJuOTgwcjZhMWNoIn0.1pYURF9UykgW3o_4CQZEqg"
