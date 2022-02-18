@@ -5,6 +5,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import StyledMapContainer from "./styled.js";
 import { Marker, Popup } from "react-leaflet";
 import MarkerIcon from "../mapmarker/index.jsx";
+import Icon from "../icon/index.jsx";
 
 const Map = ({ data }) => {
 	let position = [39.513882, 0.619564];

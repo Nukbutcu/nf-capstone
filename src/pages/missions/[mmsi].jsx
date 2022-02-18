@@ -7,9 +7,9 @@ import Card from "@mui/material/Card";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
-import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import useGet from "../../ions/hooks/fetch/get";
 // import { ListItemText } from "@mui/material";
+import Shipicon from "../../atoms/icon";
 
 const Description = () => {
 	const { query } = useRouter();
@@ -24,8 +24,7 @@ const Description = () => {
 				<meta key="description" name="description" content="" />
 			</Head>
 			<Typography variant="h2" component="h1">
-				<LocationSearchingIcon />
-				{name}
+				<Shipicon /> {name}
 			</Typography>
 			<Card>
 				{ship?.missions.map(item => {
