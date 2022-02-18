@@ -68,11 +68,10 @@ const Description = () => {
 					>
 						Refresh
 					</Button>
-					<Button>
-						<Link href={`/missions/${mmsi}`} style={{ textDecoration: "none" }}>
-							Show Missions
-						</Link>
-					</Button>
+
+					<Link href={`/missions/${mmsi}`} style={{ textDecoration: "none" }}>
+						<Button> Show Missions </Button>
+					</Link>
 				</List>
 				<MyMap />
 			</Card>

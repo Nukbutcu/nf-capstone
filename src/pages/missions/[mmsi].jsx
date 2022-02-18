@@ -30,7 +30,7 @@ const Description = () => {
 				{ship?.missions.map(item => {
 					return (
 						<List key={item.id}>
-							<ListItem> Mission:{item.mission}</ListItem>
+							<ListItem> Mission: {item.mission}</ListItem>
 							<ListItem> Start: {item.start}</ListItem>
 							<ListItem> End: {item.end}</ListItem>
 							<ListItem>Next Destination: {item.nextDestination}</ListItem>
