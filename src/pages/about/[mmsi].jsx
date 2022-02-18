@@ -5,17 +5,17 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Shipicon from "../../atoms/icon";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 const Description = () => {
 	const { reload, query } = useRouter();
-	const { mmsi } = query;
-	const { name } = query;
+	const { mmsi, name } = query;
 	const [data, setData] = useState();
 	const [unixTime, setunixTime] = useState();
 
@@ -42,7 +42,7 @@ const Description = () => {
 			</div>
 		);
 	};
-
+	console.log(name);
 	return (
 		<Layout>
 			<Head>
@@ -50,18 +50,17 @@ const Description = () => {
 				<meta key="description" name="description" content="" />
 			</Head>
 			<Typography variant="h2" component="h1">
-				<LocationSearchingIcon />
 				{name}
+				<Shipicon />
 			</Typography>
 			<Card>
-				<CardContent>
-					<ul>
-						<li>Latitude : {data && data.latitude}</li>
-						<li>Longitude : {data && data.longitude}</li>
-						<li>Speed : {data && data.speed}</li>
-						<li>TimeStamp: {data && data.timestamp}</li>
-						<li>Status from: {data && unixTime}</li>
-					</ul>
+				<List>
+					<ListItem>Latitude: {data && data.latitude}</ListItem>
+					<ListItem>Longitude: {data && data.longitude}</ListItem>
+					<ListItem>Speed: {data && data.speed}</ListItem>
+					<ListItem>TimeStamp: {data && data.timestamp}</ListItem>
+					<ListItem>Status from: {data && unixTime}</ListItem>
+
 					<Button
 						onClick={() => {
 							reload();
@@ -69,8 +68,11 @@ const Description = () => {
 					>
 						Refresh
 					</Button>
-					<Link href={`/missions/${mmsi}`}>Show Missions</Link>
-				</CardContent>
+
+					<Link href={`/missions/${mmsi}`} style={{ textDecoration: "none" }}>
+						<Button> Show Missions </Button>
+					</Link>
+				</List>
 				<MyMap />
 			</Card>
 		</Layout>
