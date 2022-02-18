@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
