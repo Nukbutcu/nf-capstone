@@ -31,7 +31,6 @@ const Description = () => {
 			const millisecons = unixTimestamp * 1000;
 			const dateObj = new Date(millisecons);
 			const humanDateformat = dateObj.toLocaleString();
-
 			setunixTime(humanDateformat);
 		}
 	}, []);
@@ -39,7 +38,7 @@ const Description = () => {
 	const MyMap = () => {
 		return (
 			<div>
-				<NoSsrMap />
+				<NoSsrMap data={data} />
 			</div>
 		);
 	};
