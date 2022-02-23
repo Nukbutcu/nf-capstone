@@ -23,7 +23,7 @@ const Description = () => {
 				<title key="title">{name} || description</title>
 				<meta key="description" name="description" content="" />
 			</Head>
-			<Typography variant="h2" component="h1">
+			<Typography variant="h3" component="h1">
 				<Shipicon /> {name}
 			</Typography>
 			<Card>

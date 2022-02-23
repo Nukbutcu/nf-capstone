@@ -38,7 +38,13 @@ const Page = () => {
 
 			{ships.map(item => (
 				<div key={item.mmsi}>
-					<Link href={`/about/${item.mmsi}`} passHref>
+					<Link
+						href={{
+							query: { mmsi: item.mmsi, name: item.name },
+							pathname: `/about/${item.mmsi}`,
+						}}
+						passHref
+					>
 						<Box pt={3} mt={3}>
 							<Button fullWidth="true">
 								<LocationSearchingIcon />{" "}

@@ -15,7 +15,8 @@ import ListItem from "@mui/material/ListItem";
 
 const Description = () => {
 	const { reload, query } = useRouter();
-	const { mmsi, name } = query;
+	const { mmsi } = query;
+	const { name } = query;
 	const [data, setData] = useState();
 	const [unixTime, setunixTime] = useState();
 
@@ -42,16 +43,16 @@ const Description = () => {
 			</div>
 		);
 	};
-	console.log(name);
+
 	return (
 		<Layout>
 			<Head>
 				<title key="title">{name} || description</title>
 				<meta key="description" name="description" content="" />
 			</Head>
-			<Typography variant="h2" component="h1">
-				{name}
+			<Typography variant="h3" component="h1">
 				<Shipicon />
+				{name}
 			</Typography>
 			<Card>
 				<List>
@@ -69,7 +70,12 @@ const Description = () => {
 						Refresh
 					</Button>
 
-					<Link href={`/missions/${mmsi}`} style={{ textDecoration: "none" }}>
+					<Link
+						href={{
+							query: { mmsi, name },
+							pathname: `/missions/${mmsi}`,
+						}}
+					>
 						<Button> Show Missions </Button>
 					</Link>
 				</List>
