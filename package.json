@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "build:dev": "npx cross-env@7 NODE_ENV=development next build",
-    "build:statichtml": "build:statichtml": "next build && next export",
+    "build:statichtml": "next build && next export",
     "cypress": "npx cypress@9 open",
     "cypress:run": "npx cypress@9 run",
     "dev": "next dev",
